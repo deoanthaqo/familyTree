@@ -23,6 +23,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-color);
@@ -188,11 +193,13 @@ body {
 .tree-container {
   width: 100%;
   height: calc(100vh - 70px);
-  margin-top: 70px;
+  min-height: 500px;
+  margin-top: 80px;
   overflow: hidden;
   position: relative;
   background: #fafbfc;
 }
+
 
 #tree-svg {
   width: 100%;
