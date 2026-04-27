@@ -200,9 +200,11 @@ function renderTree(rootData) {
         .attr("cy", 45)
         .attr("r", 35);
 
-      const photoUrl =
+      // Tambahkan timestamp (?t=...) untuk menghindari browser caching
+      const timestamp = new Date().getTime();
+      let photoUrl =
         person.photo_url && person.photo_url.trim() !== ""
-          ? person.photo_url
+          ? `${person.photo_url}?t=${timestamp}`
           : "./images/placeholder.png";
 
       nodeGroup
@@ -351,36 +353,45 @@ function showModal(person) {
 
   // Set photo with error handling
   const modalPhoto = document.getElementById("modalPhoto");
+  // Tambahkan timestamp untuk menghindari browser caching pada modal
+  const timestamp = new Date().getTime();
   const photoUrl =
     person.photo_url && person.photo_url.trim() !== ""
-      ? person.photo_url
+      ? `${person.photo_url}?t=${timestamp}`
       : "./images/placeholder.png";
   modalPhoto.src = photoUrl;
   modalPhoto.onerror = function () {
     this.src = "./images/placeholder.png";
   };
 
+  // Helper function to handle field visibility
+  const setField = (id, value, containerId) => {
+    const element = document.getElementById(id);
+    const container = document.getElementById(containerId);
+
+    if (value && value.toString().trim() !== "" && value !== "-") {
+      element.textContent = value;
+      container.style.display = "block";
+    } else {
+      container.style.display = "none";
+    }
+  };
+
   // Set basic info
   document.getElementById("modalName").textContent = person.name;
-  document.getElementById("modalGeneration").textContent =
-    person.id.split("-")[0];
-  document.getElementById("modalGeneration").style.backgroundColor =
-    generationColors[person.id.split("-")[0]] || "#95a5a6";
-  document.getElementById("modalGender").textContent = person.gender || "-";
-  document.getElementById("modalPob").textContent = person.pob || "-";
-  document.getElementById("modalDob").textContent = person.dob
-    ? formatDate(person.dob)
-    : "-";
-  document.getElementById("modalDod").textContent = person.dod
-    ? formatDate(person.dod)
-    : "Masih Hidup";
-  document.getElementById("modalBurial").textContent =
-    person.burial_place || "-";
-  document.getElementById("modalProfession").textContent =
-    person.profession || "-";
-  document.getElementById("modalEducation").textContent =
-    person.education || "-";
-  document.getElementById("modalBio").textContent = person.bio || "-";
+  const gen = person.id.split("-")[0];
+  const modalGen = document.getElementById("modalGeneration");
+  modalGen.textContent = gen;
+  modalGen.style.backgroundColor = generationColors[gen] || "#95a5a6";
+
+  setField("modalGender", person.gender, "itemGender");
+  setField("modalPob", person.pob, "itemPob");
+  setField("modalDob", person.dob ? formatDate(person.dob) : null, "itemDob");
+  setField("modalDod", person.dod ? formatDate(person.dod) : null, "itemDod");
+  setField("modalBurial", person.burial_place, "itemBurial");
+  setField("modalProfession", person.profession, "itemProfession");
+  setField("modalEducation", person.education, "itemEducation");
+  setField("modalBio", person.bio, "itemBio");
 
   // Marriage info
   const marriageSection = document.getElementById("marriageSection");
