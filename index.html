@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Pohon Keluarga</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>🌳 Pohon Keluarga</h1>
+            <p class="subtitle">Silakan login untuk melihat silsilah keluarga</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Masukkan username" 
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Masukkan password" 
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                <button type="submit" class="btn">Masuk</button>
+            </form>
+            
+            <p id="errorMessage" class="error-message"></p>
+            
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;">
+                <p style="font-size: 12px; color: #7f8c8d;">
+                    <strong>Akun Demo:</strong><br>
+                    Username: <code>admin</code> | Password: <code>admin123</code><br>
+                    Username: <code>keluarga</code> | Password: <code>keluarga2024</code>
+                </p>
+            </div>
+    </div>
+
+    <script src="./js/auth.js"></script>
+</body>
+</html>

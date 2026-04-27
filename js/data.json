@@ -1,0 +1,332 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin123"
+    },
+    {
+      "username": "keluarga",
+      "password": "keluarga2024"
+    }
+  ],
+  "family": [
+    {
+      "id": "G0-1",
+      "name": "Kakek Ahmad",
+      "gender": "Laki-laki",
+      "dob": "1920-05-15",
+      "dod": "1995-08-20",
+      "pob": "Jakarta",
+      "burial_place": "TPU Tanah Kusir",
+      "profession": "Pegawai Negeri",
+      "education": "Sarjana Hukum",
+      "bio": "Kakek Ahmad adalah pendiri keluarga besar ini. Beliau dikenal sebagai sosok yang tegas namun penuh kasih sayang. Menjabat sebagai hakim selama 30 tahun.",
+      "marriage_info": {
+        "spouse_id": "G0-2",
+        "spouse_name": "Nenek Siti",
+        "marriage_date": "1945-06-17"
+      },
+      "parents_id": [],
+      "photo_url": "./images/G0-1.jpg"
+    },
+    {
+      "id": "G0-2",
+      "name": "Nenek Siti",
+      "gender": "Perempuan",
+      "dob": "1925-03-10",
+      "dod": "2000-12-05",
+      "pob": "Bandung",
+      "burial_place": "TPU Tanah Kusir",
+      "profession": "Guru",
+      "education": "Sekolah Guru",
+      "bio": "Nenek Siti adalah seorang guru yang sangat dicintai murid-muridnya. Beliau aktif dalam kegiatan sosial dan keagamaan di lingkungan tempat tinggalnya.",
+      "marriage_info": {
+        "spouse_id": "G0-1",
+        "spouse_name": "Kakek Ahmad",
+        "marriage_date": "1945-06-17"
+      },
+      "parents_id": [],
+      "photo_url": "./images/G0-2.jpg"
+    },
+    {
+      "id": "G1-1",
+      "name": "Budi Santoso",
+      "gender": "Laki-laki",
+      "dob": "1950-08-25",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Dokter",
+      "education": "Spesialis Jantung",
+      "bio": "Budi Santoso adalah dokter spesialis jantung yang telah praktik selama 40 tahun. Beliau aktif dalam berbagai organisasi kesehatan nasional.",
+      "marriage_info": {
+        "spouse_id": "G1-2",
+        "spouse_name": "Dewi Lestari",
+        "marriage_date": "1975-09-12"
+      },
+      "parents_id": ["G0-1", "G0-2"],
+      "photo_url": "./images/G1-1.jpg"
+    },
+    {
+      "id": "G1-2",
+      "name": "Dewi Lestari",
+      "gender": "Perempuan",
+      "dob": "1952-11-30",
+      "dod": null,
+      "pob": "Surabaya",
+      "burial_place": null,
+      "profession": "Akuntan",
+      "education": "Sarjana Ekonomi",
+      "bio": "Dewi Lestari adalah akuntan senior yang pernah bekerja di beberapa perusahaan multinasional. Kini aktif mengelola yayasan amal keluarga.",
+      "marriage_info": {
+        "spouse_id": "G1-1",
+        "spouse_name": "Budi Santoso",
+        "marriage_date": "1975-09-12"
+      },
+      "parents_id": [],
+      "photo_url": "./images/G1-2.jpg"
+    },
+    {
+      "id": "G1-3",
+      "name": "Rina Wulandari",
+      "gender": "Perempuan",
+      "dob": "1955-04-18",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Pengacara",
+      "education": "Sarjana Hukum",
+      "bio": "Rina Wulandari adalah pengacara terkemuka yang fokus pada hukum keluarga. Beliau sering menjadi pembicara dalam seminar hukum nasional.",
+      "marriage_info": {
+        "spouse_id": "G1-4",
+        "spouse_name": "Hendra Wijaya",
+        "marriage_date": "1980-02-14"
+      },
+      "parents_id": ["G0-1", "G0-2"],
+      "photo_url": "./images/G1-3.jpg"
+    },
+    {
+      "id": "G1-4",
+      "name": "Hendra Wijaya",
+      "gender": "Laki-laki",
+      "dob": "1953-07-22",
+      "dod": "2010-05-30",
+      "pob": "Yogyakarta",
+      "burial_place": "TPU Karet Bivak",
+      "profession": "Insinyur",
+      "education": "Sarjana Teknik Sipil",
+      "bio": "Hendra Wijaya adalah insinyur sipil yang terlibat dalam banyak proyek infrastruktur besar di Indonesia. Beliau meninggal akibat sakit jantung.",
+      "marriage_info": {
+        "spouse_id": "G1-3",
+        "spouse_name": "Rina Wulandari",
+        "marriage_date": "1980-02-14"
+      },
+      "parents_id": [],
+      "photo_url": "./images/G1-4.jpg"
+    },
+    {
+      "id": "G2-1",
+      "name": "Andi Pratama",
+      "gender": "Laki-laki",
+      "dob": "1978-12-05",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Software Engineer",
+      "education": "Sarjana Ilmu Komputer",
+      "bio": "Andi Pratama bekerja di perusahaan teknologi terkemuka. Hobinya adalah fotografi dan traveling.",
+      "marriage_info": {
+        "spouse_id": "G2-2",
+        "spouse_name": "Maya Indah",
+        "marriage_date": "2005-06-18"
+      },
+      "parents_id": ["G1-1", "G1-2"],
+      "photo_url": "./images/G2-1.jpg"
+    },
+    {
+      "id": "G2-2",
+      "name": "Maya Indah",
+      "gender": "Perempuan",
+      "dob": "1980-03-28",
+      "dod": null,
+      "pob": "Bandung",
+      "burial_place": null,
+      "profession": "Desainer Grafis",
+      "education": "Sarjana Desain",
+      "bio": "Maya Indah adalah desainer grafis freelance. Karyanya telah memenangkan beberapa penghargaan desain nasional.",
+      "marriage_info": {
+        "spouse_id": "G2-1",
+        "spouse_name": "Andi Pratama",
+        "marriage_date": "2005-06-18"
+      },
+      "parents_id": [],
+      "photo_url": "./images/G2-2.jpg"
+    },
+    {
+      "id": "G2-3",
+      "name": "Diana Sari",
+      "gender": "Perempuan",
+      "dob": "1982-09-15",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Dokter Gigi",
+      "education": "Spesialis Kedokteran Gigi",
+      "bio": "Diana Sari memiliki klinik gigi sendiri di pusat kota. Beliau juga aktif dalam bakti sosial kesehatan gigi untuk anak-anak kurang mampu.",
+      "marriage_info": {
+        "spouse_id": "G2-4",
+        "spouse_name": "Eko Nugroho",
+        "marriage_date": "2008-11-22"
+      },
+      "parents_id": ["G1-1", "G1-2"],
+      "photo_url": "./images/G2-3.jpg"
+    },
+    {
+      "id": "G2-4",
+      "name": "Eko Nugroho",
+      "gender": "Laki-laki",
+      "dob": "1981-06-10",
+      "dod": null,
+      "pob": "Semarang",
+      "burial_place": null,
+      "profession": "Pengusaha",
+      "education": "Sarjana Manajemen",
+      "bio": "Eko Nugroho adalah pengusaha muda di bidang kuliner. Restorannya telah memiliki 10 cabang di berbagai kota.",
+      "marriage_info": {
+        "spouse_id": "G2-3",
+        "spouse_name": "Diana Sari",
+        "marriage_date": "2008-11-22"
+      },
+      "parents_id": [],
+      "photo_url": "./images/G2-4.jpg"
+    },
+    {
+      "id": "G2-5",
+      "name": "Fajar Hidayat",
+      "gender": "Laki-laki",
+      "dob": "1985-01-20",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Jurnalis",
+      "education": "Sarjana Jurnalistik",
+      "bio": "Fajar Hidayat adalah jurnalis senior di stasiun televisi nasional. Beliau pernah meliput berbagai peristiwa besar internasional.",
+      "marriage_info": {
+        "spouse_id": "G2-6",
+        "spouse_name": "Gita Maharani",
+        "marriage_date": "2010-08-08"
+      },
+      "parents_id": ["G1-3", "G1-4"],
+      "photo_url": "./images/G2-5.jpg"
+    },
+    {
+      "id": "G2-6",
+      "name": "Gita Maharani",
+      "gender": "Perempuan",
+      "dob": "1987-04-12",
+      "dod": null,
+      "pob": "Medan",
+      "burial_place": null,
+      "profession": "Psikolog",
+      "education": "Magister Psikologi",
+      "bio": "Gita Maharani adalah psikolog klinis yang fokus pada kesehatan mental anak dan remaja. Beliau menulis beberapa buku populer tentang parenting.",
+      "marriage_info": {
+        "spouse_id": "G2-5",
+        "spouse_name": "Fajar Hidayat",
+        "marriage_date": "2010-08-08"
+      },
+      "parents_id": [],
+      "photo_url": "./images/G2-6.jpg"
+    },
+    {
+      "id": "G3-1",
+      "name": "Raka Putra",
+      "gender": "Laki-laki",
+      "dob": "2008-07-14",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Pelajar",
+      "education": "SMA",
+      "bio": "Raka Putra adalah anak pertama Andi dan Maya. Ia aktif dalam kegiatan pramuka dan memiliki bakat di bidang musik.",
+      "marriage_info": null,
+      "parents_id": ["G2-1", "G2-2"],
+      "photo_url": "./images/G3-1.jpg"
+    },
+    {
+      "id": "G3-2",
+      "name": "Sinta Dewi",
+      "gender": "Perempuan",
+      "dob": "2010-11-02",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Pelajar",
+      "education": "SMP",
+      "bio": "Sinta Dewi adalah anak kedua Andi dan Maya. Hobinya adalah melukis dan menari. Ia telah memenangkan beberapa lomba seni.",
+      "marriage_info": null,
+      "parents_id": ["G2-1", "G2-2"],
+      "photo_url": "./images/G3-2.jpg"
+    },
+    {
+      "id": "G3-3",
+      "name": "Bayu Aji",
+      "gender": "Laki-laki",
+      "dob": "2012-05-20",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Pelajar",
+      "education": "SD",
+      "bio": "Bayu Aji adalah anak pertama Diana dan Eko. Ia sangat menyukai olahraga sepak bola dan bercita-cita menjadi pemain profesional.",
+      "marriage_info": null,
+      "parents_id": ["G2-3", "G2-4"],
+      "photo_url": "./images/G3-3.jpg"
+    },
+    {
+      "id": "G3-4",
+      "name": "Citra Lestari",
+      "gender": "Perempuan",
+      "dob": "2015-09-08",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Pelajar",
+      "education": "TK",
+      "bio": "Citra Lestari adalah anak kedua Diana dan Eko. Ia masih berusia 8 tahun dan sangat ceria.",
+      "marriage_info": null,
+      "parents_id": ["G2-3", "G2-4"],
+      "photo_url": "./images/G3-4.jpg"
+    },
+    {
+      "id": "G3-5",
+      "name": "Dafa Ramadhan",
+      "gender": "Laki-laki",
+      "dob": "2013-03-15",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Pelajar",
+      "education": "SD",
+      "bio": "Dafa Ramadhan adalah anak pertama Fajar dan Gita. Ia memiliki ketertarikan besar pada sains dan teknologi.",
+      "marriage_info": null,
+      "parents_id": ["G2-5", "G2-6"],
+      "photo_url": "./images/G3-5.jpg"
+    },
+    {
+      "id": "G3-6",
+      "name": "Elina Putri",
+      "gender": "Perempuan",
+      "dob": "2016-12-25",
+      "dod": null,
+      "pob": "Jakarta",
+      "burial_place": null,
+      "profession": "Pelajar",
+      "education": "TK",
+      "bio": "Elina Putri adalah anak kedua Fajar dan Gita. Ia baru berusia 7 tahun dan sangat manja.",
+      "marriage_info": null,
+      "parents_id": ["G2-5", "G2-6"],
+      "photo_url": "./images/G3-6.jpg"
+    }
+  ]
+}

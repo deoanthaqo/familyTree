@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Pohon Keluarga</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>🌳 Silsilah Keluarga Besar</h1>
+        <div class="generation-legend">
+            <div class="legend-item">
+                <div class="legend-color gen-G0"></div>
+                <span>G0 (Kakek/Nenek)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color gen-G1"></div>
+                <span>G1 (Orang Tua)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color gen-G2"></div>
+                <span>G2 (Anak)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color gen-G3"></div>
+                <span>G3 (Cucu)</span>
+            </div>
+        <div class="header-actions">
+            <button class="btn-logout" onclick="logout()">Keluar</button>
+        </div>
+    </header>
+
+    <div class="tree-container">
+        <svg id="tree-svg"></svg>
+    </div>
+
+    <div class="zoom-controls">
+        <button class="zoom-btn" onclick="zoomIn()" title="Zoom In">+</button>
+        <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out">−</button>
+        <button class="zoom-btn" onclick="resetZoom()" title="Reset">⟲</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="detailModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-photo-container">
+                    <img id="modalPhoto" src="./images/placeholder.png" alt="Foto Profil" class="modal-photo">
+                    <button class="modal-close" onclick="closeModal()">×</button>
+                </div>
+            <div class="modal-body">
+                <h2 id="modalName" class="modal-name"></h2>
+                <span id="modalGeneration" class="modal-generation"></span>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Jenis Kelamin</div>
+                        <div id="modalGender" class="info-value"></div>
+                    <div class="info-item">
+                        <div class="info-label">Tempat Lahir</div>
+                        <div id="modalPob" class="info-value"></div>
+                    <div class="info-item">
+                        <div class="info-label">Tanggal Lahir</div>
+                        <div id="modalDob" class="info-value"></div>
+                    <div class="info-item">
+                        <div class="info-label">Tanggal Wafat</div>
+                        <div id="modalDod" class="info-value"></div>
+                    <div class="info-item">
+                        <div class="info-label">Tempat Makam</div>
+                        <div id="modalBurial" class="info-value"></div>
+                    <div class="info-item">
+                        <div class="info-label">Pekerjaan</div>
+                        <div id="modalProfession" class="info-value"></div>
+                    <div class="info-item">
+                        <div class="info-label">Pendidikan</div>
+                        <div id="modalEducation" class="info-value"></div>
+                    <div class="info-item info-full">
+                        <div class="info-label">Biografi</div>
+                        <div id="modalBio" class="info-value"></div>
+                    <div class="info-item info-full" id="marriageSection" style="display: none;">
+                        <div class="info-label">Informasi Pernikahan</div>
+                        <div id="modalMarriage" class="info-value"></div>
+                </div>
+
+                <div class="modal-actions">
+                    <button id="btnSpouse" class="btn-spouse" onclick="viewSpouse()">Lihat Profil Pasangan</button>
+                </div>
+        </div>
+
+    <script src="./js/auth.js"></script>
+    <script src="./js/tree.js"></script>
+</body>
+</html>
