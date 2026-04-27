@@ -12,19 +12,19 @@
   "family": [
     {
       "id": "G0-1",
-      "name": "Kakek Ahmad",
+      "name": "Abdoel Qohar Moenthalib",
       "gender": "Laki-laki",
-      "dob": "1920-05-15",
-      "dod": "1995-08-20",
-      "pob": "Jakarta",
-      "burial_place": "TPU Tanah Kusir",
-      "profession": "Pegawai Negeri",
-      "education": "Sarjana Hukum",
-      "bio": "Kakek Ahmad adalah pendiri keluarga besar ini. Beliau dikenal sebagai sosok yang tegas namun penuh kasih sayang. Menjabat sebagai hakim selama 30 tahun.",
+      "dob": "1939-03-27",
+      "dod": "2003-02-15",
+      "pob": "Sudarabaya",
+      "burial_place": "TPU Tamiajeng, Trawas, Mojokerto",
+      "profession": "Pensiunan Sipil Angkatan Laut",
+      "education": "Sekolah Menengah Atas",
+      "bio": "Adalah sosok organisatoris dan aktivis di Partai. Partai yang perknah diikuti adalah partai marhein. Juga aktif di beberapa organisasi dan kegiatan, antara lain KPPS Pemilu, kepanitiaan di peringatan PHBN, bahkan sangat bersifat sosial dibuktikan dengan mengusahakan listrik masuk ke desa Sirapan.",
       "marriage_info": {
         "spouse_id": "G0-2",
-        "spouse_name": "Nenek Siti",
-        "marriage_date": "1945-06-17"
+        "spouse_name": "Murtiningsih",
+        "marriage_date": "1960"
       },
       "parents_id": [],
       "photo_url": "./images/G0-1.jpg"
