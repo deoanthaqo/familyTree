@@ -14,36 +14,36 @@
       "id": "G0-1",
       "name": "Abdoel Qohar Moenthalib",
       "gender": "Laki-laki",
-      "dob": "1939-03-27",
-      "dod": "2003-02-15",
-      "pob": "Sudarabaya",
-      "burial_place": "TPU Tamiajeng, Trawas, Mojokerto",
+      "dob": "27 Maret 1939",
+      "dod": "15 Februari   2003",
+      "pob": "Surabaya, Senin Legi",
+      "burial_place": "Sabtu Pahing, TPU Tamiajeng, Trawas, Mojokerto",
       "profession": "Pensiunan Sipil Angkatan Laut",
       "education": "Sekolah Menengah Atas",
       "bio": "Adalah sosok organisatoris dan aktivis di Partai. Partai yang perknah diikuti adalah partai marhein. Juga aktif di beberapa organisasi dan kegiatan, antara lain KPPS Pemilu, kepanitiaan di peringatan PHBN, bahkan sangat bersifat sosial dibuktikan dengan mengusahakan listrik masuk ke desa Sirapan.",
       "marriage_info": {
         "spouse_id": "G0-2",
         "spouse_name": "Murtiningsih",
-        "marriage_date": "1960"
+        "marriage_date": "Jakarta, 1960"
       },
       "parents_id": [],
       "photo_url": "./images/G0-1.jpg"
     },
     {
       "id": "G0-2",
-      "name": "Nenek Siti",
+      "name": "Murtiningsih",
       "gender": "Perempuan",
-      "dob": "1925-03-10",
-      "dod": "2000-12-05",
-      "pob": "Bandung",
-      "burial_place": "TPU Tanah Kusir",
-      "profession": "Guru",
-      "education": "Sekolah Guru",
-      "bio": "Nenek Siti adalah seorang guru yang sangat dicintai murid-muridnya. Beliau aktif dalam kegiatan sosial dan keagamaan di lingkungan tempat tinggalnya.",
+      "dob": "26 Juli 1939",
+      "dod": "31 Agustus 2014",
+      "pob": "Pontianak, Rabu Pahing",
+      "burial_place": "Minggu Legi, TPU Tamiajeng, Trawas, Mojokerto",
+      "profession": "Pensiunan Guru SD",
+      "education": "Sekolah Guru Atas (SGA)",
+      "bio": "Seorang guru SD yang pernah mengajar di SDN Karangrejo, SDN Sidoresmo, SDN Kemangsen Balongbendo. Mempunyai garis keturunan dari Pakubuwono 2.",
       "marriage_info": {
         "spouse_id": "G0-1",
-        "spouse_name": "Kakek Ahmad",
-        "marriage_date": "1945-06-17"
+        "spouse_name": "Abdoel Qohar Moenthalib",
+        "marriage_date": "Jakarta, 1960"
       },
       "parents_id": [],
       "photo_url": "./images/G0-2.jpg"
