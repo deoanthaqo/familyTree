@@ -113,8 +113,13 @@ function renderTree(rootData) {
     .tree()
     .nodeSize([320, 300]) // Lebar horizontal 320px (lebih lebar sedikit dari kartu pasangan 280px)
     .separation((a, b) => {
-      const aWidth = ((a.data.spouses_data?.length || 0) + 1) * 140;
-      const bWidth = ((b.data.spouses_data?.length || 0) + 1) * 140;
+      // Ganti optional chaining dengan logika yang lebih kompatibel
+      const aSpouses =
+        a.data && a.data.spouses_data ? a.data.spouses_data.length : 0;
+      const bSpouses =
+        b.data && b.data.spouses_data ? b.data.spouses_data.length : 0;
+      const aWidth = (aSpouses + 1) * 140;
+      const bWidth = (bSpouses + 1) * 140;
       const minSpace = (aWidth + bWidth) / 2 + 20;
       return Math.max(minSpace / 320, a.parent === b.parent ? 1.1 : 1.3);
     });
@@ -202,7 +207,9 @@ function renderTree(rootData) {
       // Tambahkan timestamp (?t=...) untuk menghindari browser caching
       const timestamp = new Date().getTime();
       let photoUrl =
-        person.photo_url && person.photo_url.trim() !== ""
+        person.photo_url &&
+        typeof person.photo_url === "string" &&
+        person.photo_url.trim() !== ""
           ? `${person.photo_url}?t=${timestamp}`
           : "./images/placeholder.png";
 
@@ -375,7 +382,23 @@ function showModal(person) {
   document.getElementById("modalName").textContent = person.name;
   const gen = person.id.split("-")[0];
   const modalGen = document.getElementById("modalGeneration");
-  modalGen.textContent = gen;
+
+  // Tentukan apakah Bloodline atau Spouse
+  const isBloodline =
+    (person.parents_id && person.parents_id.length > 0) || person.id === "G0-1";
+  let typeInfo = isBloodline ? "Bloodline" : "Spouse";
+
+  // Jika Bloodline dan memiliki orang tua, ambil nama mereka
+  if (isBloodline && person.parents_id && person.parents_id.length > 0) {
+    const parentNames = person.parents_id
+      .map((pid) => familyData.find((p) => p.id === pid)?.name)
+      .filter(Boolean);
+    if (parentNames.length > 0) {
+      typeInfo += ` (Anak dari ${parentNames.join(" & ")})`;
+    }
+  }
+
+  modalGen.textContent = `${gen} - ${typeInfo}`;
   modalGen.style.backgroundColor = generationColors[gen] || "#95a5a6";
 
   setField("modalGender", person.gender, "itemGender");
@@ -389,7 +412,10 @@ function showModal(person) {
 
   // Marriage info
   const marriageSection = document.getElementById("marriageSection");
-  const btnSpouse = document.getElementById("btnSpouse");
+  const modalActions = document.querySelector(".modal-actions");
+
+  // Bersihkan tombol yang ada sebelumnya
+  modalActions.innerHTML = "";
 
   const marriages = person.marriage_info
     ? Array.isArray(person.marriage_info)
@@ -404,13 +430,24 @@ function showModal(person) {
     );
     document.getElementById("modalMarriage").textContent =
       `Pasangan: ${marriageTexts.join(", ")}`;
-    btnSpouse.disabled = false;
-    btnSpouse.onclick = function () {
-      viewSpouse();
-    };
+
+    // Buat tombol dinamis untuk setiap pasangan
+    marriages.forEach((m) => {
+      const spouse = familyData.find((p) => p.id === m.spouse_id);
+      if (spouse) {
+        const btn = document.createElement("button");
+        btn.className = "btn-spouse";
+
+        // Beri label spesifik jika ada info pernikahan (misal: Suami Pertama)
+        const label = m.marriage_date ? ` (${m.marriage_date})` : "";
+        btn.textContent = `Lihat Profil ${m.spouse_name}${label}`;
+
+        btn.onclick = () => showModal(spouse);
+        modalActions.appendChild(btn);
+      }
+    });
   } else {
     marriageSection.style.display = "none";
-    btnSpouse.disabled = true;
   }
 
   // Show modal
@@ -422,21 +459,6 @@ function closeModal() {
   modal.classList.remove("active");
   currentPerson = null;
   spousePerson = null;
-}
-
-function viewSpouse() {
-  if (!currentPerson || !currentPerson.marriage_info) return;
-
-  const marriages = Array.isArray(currentPerson.marriage_info)
-    ? currentPerson.marriage_info
-    : [currentPerson.marriage_info];
-  const spouseId = marriages[0].spouse_id; // Default ke pasangan pertama
-  const spouse = familyData.find((p) => p.id === spouseId);
-
-  if (spouse) {
-    spousePerson = currentPerson;
-    showModal(spouse);
-  }
 }
 
 // Close modal when clicking outside
