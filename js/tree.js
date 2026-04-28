@@ -38,38 +38,32 @@ document.addEventListener("DOMContentLoaded", async function () {
 function buildHierarchy(flatData) {
   const nodeMap = {};
 
-  // 1. Filter hanya "Anggota Utama" (Bloodline)
-  // Menantu tidak dijadikan node sendiri agar tidak muncul sebagai 'saudara' pasangan mereka.
+  // 1. Filter hanya anggota jalur darah (bloodline) sebagai node utama
   const primaryMembers = flatData.filter((person) => {
-    // Jika punya orang tua, dia adalah anak (bloodline)
-    if (person.parents_id && person.parents_id.length > 0) return true;
-
-    // Jika tidak punya orang tua, cek apakah dia Root G0.
-    // Kita pilih satu orang (G0-1) sebagai anchor agar Root hanya ada satu.
-    if (person.marriage_info && person.marriage_info.spouse_id) {
-      const spouse = flatData.find(
-        (p) => p.id === person.marriage_info.spouse_id,
-      );
-      // Jika pasangan punya orang tua, maka person ini adalah menantu (bukan bloodline)
-      if (spouse && spouse.parents_id && spouse.parents_id.length > 0)
-        return false;
-      // Jika keduanya tidak punya orang tua (G0), pilih laki-laki sebagai anchor utama
-      if (spouse && person.gender === "Perempuan") return false;
-    }
-    return true;
+    return (
+      (person.parents_id && person.parents_id.length > 0) ||
+      person.id === "G0-1"
+    );
   });
 
-  // 2. Map anggota utama dan tempelkan data pasangan
+  // 2. Petakan data dan kumpulkan semua pasangan ke dalam array spouses_data
   primaryMembers.forEach((person) => {
-    nodeMap[person.id] = { ...person, children: [] };
-    if (person.marriage_info && person.marriage_info.spouse_id) {
-      nodeMap[person.id].spouse_data = flatData.find(
-        (p) => p.id === person.marriage_info.spouse_id,
-      );
-    }
+    const marriages = person.marriage_info
+      ? Array.isArray(person.marriage_info)
+        ? person.marriage_info
+        : [person.marriage_info]
+      : [];
+
+    nodeMap[person.id] = {
+      ...person,
+      children: [],
+      spouses_data: marriages
+        .map((m) => flatData.find((p) => p.id === m.spouse_id))
+        .filter(Boolean),
+    };
   });
 
-  // 3. Bangun Hierarki
+  // 3. Bangun struktur hierarki
   const roots = [];
   primaryMembers.forEach((person) => {
     const node = nodeMap[person.id];
@@ -78,7 +72,7 @@ function buildHierarchy(flatData) {
     if (parentId) {
       nodeMap[parentId].children.push(node);
     } else {
-      roots.push(node);
+      if (node.id === "G0-1") roots.push(node);
     }
   });
 
@@ -117,14 +111,19 @@ function renderTree(rootData) {
   // Create tree layout (HORIZONTAL: x = level/generasi, y = horizontal spread)
   const treeLayout = d3
     .tree()
-    .nodeSize([200, 320]) // Beri ruang horizontal lebih luas untuk pasangan
-    .separation((a, b) => (a.parent === b.parent ? 1.2 : 1.5));
+    .nodeSize([320, 300]) // Lebar horizontal 320px (lebih lebar sedikit dari kartu pasangan 280px)
+    .separation((a, b) => {
+      const aWidth = ((a.data.spouses_data?.length || 0) + 1) * 140;
+      const bWidth = ((b.data.spouses_data?.length || 0) + 1) * 140;
+      const minSpace = (aWidth + bWidth) / 2 + 20;
+      return Math.max(minSpace / 320, a.parent === b.parent ? 1.1 : 1.3);
+    });
 
   const root = d3.hierarchy(rootData);
   treeLayout(root);
 
   // Center the tree (horizontal)
-  const initialTransform = d3.zoomIdentity.translate(width / 2, 80).scale(0.8);
+  const initialTransform = d3.zoomIdentity.translate(width / 2, 80).scale(0.7); // Skala ditingkatkan kembali ke 0.7 agar lebih jelas
   svg.call(zoomBehavior.transform, initialTransform);
 
   // Draw links (HORIZONTAL: x = level, y = horizontal spread)
@@ -166,9 +165,9 @@ function renderTree(rootData) {
 
     const nodeGroup = d3.select(this);
     const generation = d.data.id.split("-")[0];
-    const hasSpouse = d.data.spouse_data;
-    const cardWidth = hasSpouse ? 280 : 140;
-    const xOffset = hasSpouse ? -140 : -70;
+    const spouses = d.data.spouses_data || [];
+    const cardWidth = (1 + spouses.length) * 140;
+    const xOffset = -(cardWidth / 2);
 
     // Node card background
     nodeGroup
@@ -261,19 +260,14 @@ function renderTree(rootData) {
         });
     };
 
-    if (hasSpouse) {
-      drawPerson(d.data, -70);
-      drawPerson(d.data.spouse_data, 70);
-
-      // Garis pemisah antar pasangan
-      nodeGroup
-        .append("line")
-        .attr("x1", 0)
-        .attr("y1", 20)
-        .attr("x2", 0)
-        .attr("y2", 140)
-        .attr("stroke", "#eee")
-        .attr("stroke-dasharray", "4");
+    if (spouses.length === 2) {
+      // Layout 3 orang: Suami 1 - Ritta - Suami 2
+      drawPerson(spouses[0], xOffset + 70); // Muklas
+      drawPerson(d.data, xOffset + 210); // Ritta
+      drawPerson(spouses[1], xOffset + 350); // Sadjali
+    } else if (spouses.length === 1) {
+      drawPerson(d.data, xOffset + 70);
+      drawPerson(spouses[0], xOffset + 210);
     } else {
       drawPerson(d.data, 0);
     }
@@ -397,10 +391,19 @@ function showModal(person) {
   const marriageSection = document.getElementById("marriageSection");
   const btnSpouse = document.getElementById("btnSpouse");
 
-  if (person.marriage_info) {
+  const marriages = person.marriage_info
+    ? Array.isArray(person.marriage_info)
+      ? person.marriage_info
+      : [person.marriage_info]
+    : [];
+  if (marriages.length > 0) {
     marriageSection.style.display = "block";
+    const marriageTexts = marriages.map(
+      (m) =>
+        `${m.spouse_name}${m.marriage_date ? " (" + m.marriage_date + ")" : ""}`,
+    );
     document.getElementById("modalMarriage").textContent =
-      `Pasangan: ${person.marriage_info.spouse_name} (${person.marriage_info.marriage_date})`;
+      `Pasangan: ${marriageTexts.join(", ")}`;
     btnSpouse.disabled = false;
     btnSpouse.onclick = function () {
       viewSpouse();
@@ -424,7 +427,10 @@ function closeModal() {
 function viewSpouse() {
   if (!currentPerson || !currentPerson.marriage_info) return;
 
-  const spouseId = currentPerson.marriage_info.spouse_id;
+  const marriages = Array.isArray(currentPerson.marriage_info)
+    ? currentPerson.marriage_info
+    : [currentPerson.marriage_info];
+  const spouseId = marriages[0].spouse_id; // Default ke pasangan pertama
   const spouse = familyData.find((p) => p.id === spouseId);
 
   if (spouse) {
