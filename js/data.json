@@ -434,7 +434,7 @@
       "marriage_info": {
         "spouse_id": "G2-8",
         "spouse_name": "Khoiron Fanani",
-        "marriage_date": "Mojokerto, 2013 - Sekarang"
+        "marriage_date": "Mojokerto, 18 Oktober 2013 - Sekarang"
       },
       "parents_id": ["G1-3", "G1-4"],
       "photo_url": "./images/G2-7.jpg"
@@ -453,7 +453,7 @@
       "marriage_info": {
         "spouse_id": "G2-7",
         "spouse_name": "Imama Nanda Anthaqo",
-        "marriage_date": "Mojokerto, 2013 - Sekarang"
+        "marriage_date": "Mojokerto, 18 Oktober 2013 - Sekarang"
       },
       "parents_id": [],
       "photo_url": "./images/G2-8.jpg"
@@ -980,14 +980,14 @@
     },
     {
       "id": "G3-4",
-      "name": "Assyfa Inara Rakhdansrina",
+      "name": "Assyfa Inara Rakhsandrina",
       "gender": "Perempuan",
       "dob": "20 Januari 2017",
       "dod": null,
       "pob": "Jember",
       "burial_place": null,
       "profession": "Pelajar",
-      "education": "SDN Ngampelrejo",
+      "education": "SDN Ngampelrejo 01",
       "bio": "Anak kedua dari pasangan Fitria Nanda Anthaqo dan Singgih Ahnu Wijaya, Assyfa Inara Rakhdansrina adalah seorang anak yang ceria dan penuh semangat. Sejak kecil, Assyfa telah menunjukkan minat yang besar dalam seni dan kreativitas, seringkali menghabiskan waktu luangnya dengan menggambar dan membuat kerajinan tangan. Dia dikenal sebagai anak yang mudah bergaul dan memiliki banyak teman di sekolahnya. Dengan dukungan penuh dari orang tuanya, Assyfa memiliki potensi besar untuk berkembang menjadi individu yang kreatif dan sukses di masa depan.",
       "marriage_info": null,
       "parents_id": ["G2-5", "G2-6"],
@@ -1002,7 +1002,7 @@
       "pob": "Jember",
       "burial_place": null,
       "profession": "Pelajar",
-      "education": "SDN Ngampelrejo",
+      "education": "SDN Ngampelrejo 01",
       "bio": "Asraf adalah anak ketiga dari pasangan Fitria Nanda Anthaqo dan Singgih Ahnu Wijaya. Sejak usia dini, Ashraf telah menunjukkan minat yang besar dalam bidang teknologi dan komputer. Dia sering menghabiskan waktu luangnya dengan bermain game edukatif dan belajar coding dasar melalui aplikasi pembelajaran online. Ashraf dikenal sebagai anak yang cerdas dan cepat belajar, dengan kemampuan untuk memahami konsep-konsep teknologi yang kompleks dengan mudah. Dengan dukungan penuh dari orang tuanya, Ashraf memiliki potensi besar untuk berkembang menjadi seorang ahli teknologi yang sukses di masa depan.",
       "marriage_info": null,
       "parents_id": ["G2-5", "G2-6"],
@@ -1012,12 +1012,12 @@
       "id": "G3-6",
       "name": "Brahmasta Widyatama Prabaswara",
       "gender": "Laki-laki",
-      "dob": "30 September 2018",
+      "dob": "19 November 2019",
       "dod": null,
       "pob": "Jember",
       "burial_place": null,
       "profession": "Pelajar",
-      "education": "TK Madrasah Ibtidaiyah Swasta Ma'arif Nurul Hikmah",
+      "education": "TK Nurul Hikmah Ngampelrejo",
       "bio": "Bama adalah anak keempat dari pasangan Fitria Nanda Anthaqo dan Singgih Ahnu Wijaya. Sejak usia dini, Brahmasta telah menunjukkan minat yang besar dalam bidang seni dan kreativitas. Dia sering menghabiskan waktu luangnya dengan menggambar, mewarnai, dan membuat kerajinan tangan. Brahmasta dikenal sebagai anak yang ceria dan penuh semangat, dengan kemampuan untuk mengekspresikan dirinya melalui seni dengan cara yang unik dan menarik. Dengan dukungan penuh dari orang tuanya, Brahmasta memiliki potensi besar untuk berkembang menjadi individu yang kreatif dan sukses di masa depan.",
       "marriage_info": null,
       "parents_id": ["G2-5", "G2-6"],
